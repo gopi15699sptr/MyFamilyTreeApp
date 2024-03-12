@@ -1,161 +1,227 @@
-// import React, {useEffect, useRef, useState} from 'react';
-// import {View,Text,UIManager} from 'react-native';
-// // import f3 from 'family-chart';
-// // import createStore from './components/familyTree/createStore';
-// import createStore from './components/familyTree/createStore';
-// import d3AnimationView from './components/familyTree/animatedView';
-// // function data() {
-// //   return [];
-// // }
+/**
+ * Sample React Native App
+ * https://github.com/facebook/react-native
+ * @flow
+ */
 
-// if (Platform.OS === 'android' && UIManager.setLayoutAnimationEnabledExperimental) {
-//   UIManager.setLayoutAnimationEnabledExperimental(true);
-// }
+import React, { Component } from 'react';
+import {
+  AppRegistry,
+  StyleSheet,
+  Text,
+  View
+} from 'react-native';
+import AwesomeHierarchyGraph from 'react-native-d3-tree-graph'
 
-
-// export default function App() {
-
-//   const svgRef = useRef(null);
-
-//   const [refVal, setRefVal] = useState(null);
-
-//   useEffect(() => {
-//     const store = createStore({
-//       data: [],
-//       node_separation: 250,
-//       level_separation: 150,
-//     });
-
-//     // console.log(store)
-
-//     if (svgRef.current) {
-//       svgRef.current.measure((x, y, width, height, pageX, pageY) => {
-//         console.log(x)
-//         setRefVal({x, y, width, height, pageX, pageY});
-//       });
-//     }
-//     // const view = d3AnimationView({
-//     //   store,
-//     //   refVal,
-//     // });
-
-//   //   // const Card = f3.elements.Card({
-//   //   //   store,
-//   //   //   svg: view.svg,
-//   //   //   card_dim: {
-//   //   //     w: 220,
-//   //   //     h: 70,
-//   //   //     text_x: 75,
-//   //   //     text_y: 15,
-//   //   //     img_w: 60,
-//   //   //     img_h: 60,
-//   //   //     img_x: 5,
-//   //   //     img_y: 5,
-//   //   //   },
-//   //   //   card_display: [
-//   //   //     d => `${d.data['first name'] || ''} ${d.data['last name'] || ''}`,
-//   //   //     d => `${d.data['birthday'] || ''}`,
-//   //   //   ],
-//   //   //   mini_tree: true,
-//   //   //   link_break: false,
-//   //   // });
-
-//   //   // view.setCard(Card);
-//   //   // store.setOnUpdate(props => view.update(props || {}));
-//   //   // store.update.tree({initial: true});
-//    }, []); // Only run once on mount
-
-//   //  useEffect(() => {console.log(svgRef.current)},[svgRef.current])
-//   return <View ref={svgRef} style={{flex: 1}} ></View>;
-// }
-
-
-
-import React, {useEffect, useRef, useState} from 'react';
-import {Text, View, StyleSheet} from 'react-native';
-import createStore from './components/familyTree/createStore';
-import d3AnimationView from './components/familyTree/animatedView';
-
-const App = () => {
-  const textContainerRef = useRef(null);
-  const textRef = useRef(null);
-  const [measure, setMeasure] = useState(null);
-  const [TreeView,setTreeView] = useState(null);
-
-
-    const svgRef = useRef(null);
-
-  const [refVal, setRefVal] = useState(null);
-
-  useEffect(() => {
-
-
-
-
-
-
-  }, []); 
-
-  useEffect(() => {
-    console.log(measure)
-    if (textRef.current && textContainerRef.current) {
-      textRef.current.measureLayout(
-        textContainerRef.current,
-        (left, top, width, height) => {
-          setMeasure({left, top, width, height});
+var root = {
+    name: "",
+    id: 1,
+    hidden: true,
+    children: [ {
+            name: "Q",
+            id: 16,
+            no_parent: true,
+            imageUrl: { href: { uri: "https://facebook.github.io/react-native/docs/assets/favicon.png"}},
+            nodeImageStyle: { imageHeight: 60 , imageWidth: 60, opacity: 1 },
+            nodeTextStyle: { fontSize: 12 }
         },
-      );
-    }
-    if(measure){
+        {
+        name: "",
+        id: 2,
+        no_parent: true,
+        hidden: true,
+        children: [{
+            name: "J",
+            id: 12,
+            imageUrl: { href: { uri: "https://facebook.github.io/react-native/docs/assets/favicon.png"}},
+            nodeImageStyle: { imageHeight: 60 , imageWidth: 60, opacity: 1 },
+            nodeTextStyle: { fontSize: 12 }
+        }, {
+            name: "L",
+            id: 13,
+            no_parent: true,
+            imageUrl: { href: { uri: "https://facebook.github.io/react-native/docs/assets/favicon.png"}},
+            nodeImageStyle: { imageHeight: 60 , imageWidth: 60, opacity: 1 },
+            nodeTextStyle: { fontSize: 12 }
+        }, {
+            name: "C",
+            id: 3,
+            imageUrl: { href: { uri: "https://facebook.github.io/react-native/docs/assets/favicon.png"}},
+            nodeImageStyle: { imageHeight: 60 , imageWidth: 60, opacity: 1 },
+            nodeTextStyle: { fontSize: 12 }
+        }, {
+            name: "",
+            id: 4,
+            hidden: true,
+            no_parent: true,
+            children: [{
+                name: "D",
+                id: 5,
+                imageUrl: { href: { uri: "https://facebook.github.io/react-native/docs/assets/favicon.png"}},
+                nodeImageStyle: { imageHeight: 60 , imageWidth: 60, opacity: 1 },
+                nodeTextStyle: { fontSize: 12 }
+            }, {
+                name: "",
+                id: 14,
+                hidden: true,
+                no_parent: true,
+                children: [{
+                    name: "P",
+                    id: 15,
+                    imageUrl: { href: { uri: "https://facebook.github.io/react-native/docs/assets/favicon.png"}},
+                    nodeImageStyle: { imageHeight: 60 , imageWidth: 60, opacity: 1 },
+                    nodeTextStyle: { fontSize: 12 }
+                }]
+            }, {
+                name: "E",
+                id: 6,
+                imageUrl: { href: { uri: "https://facebook.github.io/react-native/docs/assets/favicon.png"}},
+                nodeImageStyle: { imageHeight: 60 , imageWidth: 60, opacity: 1 },
+                nodeTextStyle: { fontSize: 12 }
+            }]
+        }, {
+            name: "K",
+            id: 11,
+            imageUrl: { href: { uri: "https://facebook.github.io/react-native/docs/assets/favicon.png"}},
+            nodeImageStyle: { imageHeight: 60 , imageWidth: 60, opacity: 1 },
+            nodeTextStyle: { fontSize: 12 }
+        }, {
+            name: "G",
+            id: 7,
+            imageUrl: { href: { uri: "https://facebook.github.io/react-native/docs/assets/favicon.png"}},
+            nodeImageStyle: { imageHeight: 60 , imageWidth: 60, opacity: 1 },
+            nodeTextStyle: { fontSize: 12 },
+            children: [{
+                name: "H",
+                id: 8,
+                imageUrl: { href: { uri: "https://facebook.github.io/react-native/docs/assets/favicon.png"}},
+                nodeImageStyle: { imageHeight: 60 , imageWidth: 60, opacity: 1 },
+                nodeTextStyle: { fontSize: 12 }
+            }, {
+                name: "I",
+                id: 9,
+                imageUrl: { href: { uri: "https://facebook.github.io/react-native/docs/assets/favicon.png"}},
+                nodeImageStyle: { imageHeight: 60 , imageWidth: 60, opacity: 1 },
+                nodeTextStyle: { fontSize: 12 }
+            }]
+        }]
+    }, {
+        name: "M",
+        id: 10,
+        no_parent: true,
+        imageUrl: { href: { uri: "https://facebook.github.io/react-native/docs/assets/favicon.png"}},
+        nodeImageStyle: { imageHeight: 60 , imageWidth: 60, opacity: 1 },
+        nodeTextStyle: { fontSize: 12 },
+        children: [
+          
+        ]
+    },
 
-      const store = createStore({
-        data: [],
-        node_separation: 250,
-        level_separation: 150,
-      });
+
+    
+    {
+        name: "anoop",
+        id: 155,
+        no_parent: true,
+        children: [{
+            name: "H",
+            id: 8,
+        }, {
+            name: "I",
+            id: 9,
+        },
+        {
+            name: "I",
+            id: 9,
+        },
+        {
+            name: "I",
+            id: 9,
+        },
+        {
+            name: "I",
+            id: 9,
+        },
+
+      ]
+    },
+    {
+            name: "x",
+            id: 16,
+            no_parent: true
+    }
   
+  ]
+}
 
-      if(measure){
-        const view = d3AnimationView({
-          store,
-          svgRef:measure,
-        });
-        setTreeView(view);
-      }
-      console.log('aaaaa',store)
+var siblings = [{
+    source: {
+        id: 3,
+        name: "C"
+    },
+    target: {
+        id: 11,
+        name: "K"
     }
+}, {
+    source: {
+        id: 12,
+        name: "L"
+    },
+    target: {
+        id: 13,
+        name: "J"
+    }
+}, {
+    source: {
+        id: 5,
+        name: "D"
+    },
+    target: {
+        id: 6,
+        name: "E"
+    }
+}, {
+    source: {
+        id: 16,
+        name: "Q"
+    },
+    target: {
+        id: 10,
+        name: "M"
+    }
+}];
 
-  }, [measure?.width]);
 
-  return (
-    <>
-      <View ref={textContainerRef} style={styles.textContainer}>
-        <View ref={textRef}></View>
-      </View>
-      {/* <Text style={styles.measure}>{JSON.stringify(measure)}</Text> */}
-      {TreeView && (
-        <TreeView/>
-      )}
-    </>
+export default function App() {
 
-  );
-};
+    return (
+        <View style={styles.container}>
+        <AwesomeHierarchyGraph
+         root = {root}
+         siblings = {siblings}
+        />
+       </View>
+    );
+  
+}
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-  },
-  textContainer: {
-    backgroundColor: '#61dafb',
-    justifyContent: 'center',
     alignItems: 'center',
-    padding: 12,
+    backgroundColor: '#F5FCFF',
   },
-  measure: {
+  welcome: {
+    fontSize: 20,
     textAlign: 'center',
-    padding: 12,
+    margin: 10,
+  },
+  instructions: {
+    textAlign: 'center',
+    color: '#333333',
+    marginBottom: 5,
   },
 });
 
-export default App;
