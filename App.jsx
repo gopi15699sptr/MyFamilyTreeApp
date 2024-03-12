@@ -75,6 +75,7 @@ import React, {useEffect, useRef, useState} from 'react';
 import {Text, View, StyleSheet} from 'react-native';
 import createStore from './components/familyTree/createStore';
 import d3AnimationView from './components/familyTree/animatedView';
+import Card from './components/familyTree/card';
 
 const App = () => {
   const textContainerRef = useRef(null);
@@ -115,14 +116,34 @@ const App = () => {
       });
   
 
-      if(measure){
         const view = d3AnimationView({
           store,
           svgRef:measure,
         });
         setTreeView(view);
-      }
+      
       console.log('aaaaa',store)
+
+      const card = Card({
+        store,
+        svg: view.svg,
+        card_dim: {
+          w: 220,
+          h: 70,
+          text_x: 75,
+          text_y: 15,
+          img_w: 60,
+          img_h: 60,
+          img_x: 5,
+          img_y: 5
+        },
+        card_display: [
+          (d) => `${d.data["first name"] || ""} ${d.data["last name"] || ""}`,
+          (d) => `${d.data["birthday"] || ""}`
+        ],
+        mini_tree: true,
+        link_break: false
+      })
     }
 
   }, [measure?.width]);
@@ -133,9 +154,7 @@ const App = () => {
         <View ref={textRef}></View>
       </View>
       {/* <Text style={styles.measure}>{JSON.stringify(measure)}</Text> */}
-      {TreeView && (
-        <TreeView/>
-      )}
+     
     </>
 
   );
